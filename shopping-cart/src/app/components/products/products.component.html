@@ -1,19 +1,30 @@
-<h2>
-  <p>Please Select a Category</p>
-<select (change)="filter($event)">
-  <option>All</option>
-  <option>Electronics</option>
-  <option>Furniture</option>
-</select>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>The Store</h2>
+      <p>Please Select a Category</p>
+      <select (change)="filter($event)">
+        <option>Electronics</option>
+        <option>Furniture</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div
+        [ngClass]="{ favorite: i.fav }"
+        *ngFor="let i of products"
+        class="product card"
+      >
+        <p>Product: {{ i.title }}</p>
 
-<div [ngClass]="{ favorite: i.fav }" *ngFor="let i of products" class="product card">
-  <p>Product: {{ i.title }}</p>
+        <p>Price: ${{ i.price }}</p>
 
-  <p>Price: ${{ i.price }}</p>
+        <p>Category: {{ i.category }}</p>
 
-  <p>Category: {{ i.category }}</p>
-
-  <button (click)="setFavorite(i)">Favorite Item</button>
-  <button (click)="addToCart(i)">Add to Cart</button>
-
+        <button (click)="setFavorite(i)">Favorite Item</button>
+        <button (click)="addToCart(i)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
 </div>
